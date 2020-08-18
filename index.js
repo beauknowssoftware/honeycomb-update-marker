@@ -2,9 +2,20 @@ const core = require('@actions/core')
 const fetch = require('node-fetch')
 
 async function run() {
+  // required
   const xHoneycombTeam = core.getInput('X-Honeycomb-Team')
   const dataset = core.getInput('dataset')
   const markerId = core.getInput('markerId')
+  if ( !xHoneycombTeam ) {
+    throw new Error("missing X-Honeycomb-Team input")
+  }
+  if ( !dataset ) {
+    throw new Error("missing dataset input")
+  }
+  if ( !markerId ) {
+    throw new Error("missing markerId input")
+  }
+
   const end = core.getInput('end')
   const type = core.getInput('type')
   const message = core.getInput('message')
