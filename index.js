@@ -31,10 +31,8 @@ async function run() {
   if ( message ) {
     marker.message = message
   }
-  console.log("end ", end)
   if ( end ) {
-    marker.end_date = Math.floor(Date.now()/1000)
-    console.log("ending ", marker.end_date)
+    marker.end_time = Math.floor(Date.now()/1000)
   }
 
   await fetch(`https://api.honeycomb.io/1/markers/${dataset}/${markerId}`, {
